@@ -1,0 +1,343 @@
+/* ===== CSS Variables ===== */
+:root {
+    --color-primary: #CC0000;
+    --color-dark: #1a1a1a;
+    --color-body: #333333;
+    --color-muted: #666666;
+    --color-light: #f5f5f5;
+    --color-white: #ffffff;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+
+    /* Font Sizes */
+    --font-size-hero: clamp(2rem, 5vw + 1rem, 5rem);
+    --font-size-section-lg: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
+    --font-size-section: clamp(1.5rem, 3vw + 0.5rem, 2rem);
+    --font-size-md: clamp(1rem, 2vw + 0.5rem, 1.125rem);
+    --font-size-card-title: clamp(1.1rem, 2vw + 0.5rem, 1.35rem);
+    --font-size-body: clamp(0.9rem, 1vw + 0.5rem, 1rem);
+    --font-size-small: clamp(0.85rem, 1vw + 0.5rem, 0.95rem);
+    --font-size-meta: 0.75rem;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.25rem;
+    --space-xl: 1.5rem;
+
+    /* Section Padding */
+    --section-padding: 5rem 1.25rem;
+
+    /* Border Radius */
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-pill: 1.875rem;
+
+    /* Shadows */
+    --shadow-card: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+
+    /* Layout Max Widths */
+    --max-width-content: 50rem;
+    --max-width-wide: 62.5rem;
+
+    /* Grid Gap Values */
+    --grid-gap-md: 1.5rem;
+}
+
+/* ===== Base Reset ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    background-color: var(--color-light);
+    line-height: 1.8;
+}
+
+/* ===== Header ===== */
+.page-header {
+    background-color: var(--color-dark);
+    padding: var(--space-xs) var(--space-md);
+    position: relative;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.magazine-name {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-card-title);
+    letter-spacing: 0.2rem;
+    color: var(--color-white);
+}
+
+.site-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.site-header nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: var(--font-size-body);
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+.site-header nav a:hover {
+    color: var(--color-primary);
+}
+
+/* ===== Hamburger Menu ===== */
+/* AI used to help build the hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+
+.hamburger span {
+    display: block;
+    width: 1.375rem;
+    height: 0.125rem;
+    background-color: var(--color-white);
+}
+
+/* ===== Magazine Grid Layout ===== */
+/* AI used to help with grid layout */
+.magazine-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    max-width: 81.25rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    grid-template-areas:
+        "hero hero hero hero hero hero hero hero hero hero hero hero"
+        "body body body body body body body body body body body body";
+}
+
+.hero         { grid-area: hero; }
+.article-body { grid-area: body; }
+
+/* ===== Hero Section ===== */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    filter: brightness(0.7) contrast(1.1);
+    display: block;
+}
+
+/* AI used to help with gradient */
+.hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 4rem;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+    color: var(--color-white);
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: var(--space-sm);
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-hero);
+    color: var(--color-white);
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: var(--font-size-md);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 70ch;
+    line-height: 1.6;
+}
+
+/* ===== Author Info ===== */
+.meta {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-small);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.meta-author {
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.article-body p {
+    margin-bottom: 1.4rem;
+    font-size: var(--font-size-body);
+    line-height: 1.8;
+}
+
+/* ===== Inline Images ===== */
+.inline-image {
+    width: 50%;
+}
+
+.inline-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.inline-image figcaption {
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    margin-top: var(--space-xs);
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.float-left {
+    float: left;
+    margin: 0 var(--space-xl) var(--space-md) 0;
+}
+
+.float-right {
+    float: right;
+    margin: 0 0 var(--space-md) var(--space-xl);
+}
+
+/* Float Clearfix — referenced W3Schools & AI to make this */
+.article-body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ===== Pull Quotes ===== */
+.pull-quote {
+    clear: both;
+    width: 100%;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-section);
+    font-weight: 700;
+    text-align: center;
+    padding: var(--space-lg) 2rem;
+    margin: 2.5rem 0;
+    border-top: 0.25rem solid var(--color-dark);
+    border-bottom: 0.25rem solid var(--color-dark);
+    color: var(--color-dark);
+    line-height: 1.2;
+}
+
+.pull-quote p {
+    margin-bottom: 0;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    text-align: center;
+    padding: 2rem;
+    font-size: var(--font-size-body);
+    margin-top: 2rem;
+}
+
+/* AI used to help set up the three layout sizes */
+/* ---- Tablet ---- */
+@media (max-width: 64rem) {
+
+    .hero-content {
+        padding: 2rem;
+    }
+
+    .inline-image {
+        width: 45%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    #main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-dark);
+        padding: var(--space-md);
+        z-index: 100;
+    }
+
+    /* Nav Toggle — AI used to help write this selector */
+    .nav-toggle:checked ~ .site-header #main-nav {
+        display: block;
+    }
+
+    .site-header nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .site-header nav a {
+        display: block;
+        padding: var(--space-sm) 0;
+        border-bottom: 0.0625rem solid #333;
+        text-align: center;
+    }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 48rem) {
+
+    .magazine-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "hero"
+            "body";
+        gap: var(--space-md);
+        padding: 0 var(--space-md);
+    }
+
+    .hero-image {
+        height: 50vh;
+    }
+
+    .hero-content {
+        padding: var(--space-xl);
+    }
+
+    .inline-image {
+        width: 100%;
+        float: none;
+        margin: 0 0 var(--space-xl) 0;
+    }
+}
